@@ -29,6 +29,38 @@ class Controller {
       return res.status(500).send('Erro ao tentar atualizar os dados');
     }
   }
+
+  async criar (req,res){
+    const dadosNovos = req.body;
+
+    try{
+      const dadosCriados = await this.entidadeService.criarRegistro(dadosNovos);
+
+      if(!dadosCriados){
+        return res.status(400).json({mensagem: 'Erro ao criar'});
+
+      }
+      return res.status(200).json({mensagem: 'Dado criado com sucesso'});
+
+    } catch (erro) {
+
+      res.status(500).json({mensagem: 'Erro no servidor'});
+    }
+  }
+
+  async deletar (req,res){
+    const { id } = req.params;
+
+    try{
+      await this.entidadeService.excluirRegistro(Number(id));
+
+      return res.status(200).json({mensagem:'Dados deletados com sucesso'});
+
+    }catch(erro) {
+
+      res.status(500).json({mensagem: 'Erro no servidor'});
+    }
+  }
 }
 
 module.exports = Controller;
