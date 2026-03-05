@@ -20,6 +20,17 @@ class Services{
     }
     return true;
   }
+
+  async criarRegistro(dadosNovos) {
+    return dataSource[this.model].create(dadosNovos);
+  }
+
+
+  async excluirRegistro(id){
+    return dataSource[this.model].destroy({
+      where: { id: id }
+    });
+  }
 }
 
 module.exports = Services;
