@@ -9,6 +9,10 @@ class Services{
     return dataSource[this.model].findAll();
   }
 
+  async pegaRegistroPorID(id){
+    return dataSource[this.model].findByPk(id);
+  }
+
   async atualizaRegistro(dadosAtualizados, id) {
     const listaDeRegistrosAtualizados =  dataSource[this.model].update(dadosAtualizados, {
       where: { id: id }

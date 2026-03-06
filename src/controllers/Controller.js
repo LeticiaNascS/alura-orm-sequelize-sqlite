@@ -13,6 +13,18 @@ class Controller {
     }
   }
 
+  async pegaUmPorId(req,res){
+    const {id} = req.params;
+
+    try{
+      const umRegistro = await this.entidadeService.pegaRegistroPorId(Number(id));
+      return res.status(200).json(umRegistro);
+
+    }catch(erro){
+      res.status(500).json({mensagem: 'Erro no servidor'});
+    }
+  }
+
   async atualiza(req,res){
    
     const { id } = req.params;
