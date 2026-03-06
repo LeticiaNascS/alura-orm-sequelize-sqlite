@@ -38,7 +38,7 @@ class Controller {
       }
       return res.status(200).json({mensagem: 'Registro atualizado com sucesso'});
     } catch (erro) {
-      return res.status(500).send('Erro ao tentar atualizar os dados');
+      return res.status(500).send('Erro no servidor');
     }
   }
 
