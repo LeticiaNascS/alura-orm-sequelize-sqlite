@@ -17,5 +17,6 @@ router.post('/pessoas', (req,res) => pessoaController.criar(req,res));
 router.delete('/pessoas/:id', (req,res) => pessoaController.deletar(req,res));
 router.get('/pessoas/:estudanteId/matriculas', (req,res) => pessoaController.pegaMatriculas(req,res));
 router.post('/pessoas/:estudanteId/matriculas', (req,res) => matriculaController.criar(req,res));
+router.post('/pessoas/estudanteId/matriculas' , (req,res) => matriculaController (req,res));
 
 module.exports = router;
