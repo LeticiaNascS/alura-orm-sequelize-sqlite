@@ -1,3 +1,4 @@
+const { Transaction } = require('sequelize');
 const dataSource = require ('../database/models');
 const { options } = require('../routes/pessoasRoutes');
  
@@ -25,9 +26,10 @@ class Services{
     return dataSource[this.model].findAndCountAll({...options});
   }
 
-  async atualizaRegistro(dadosAtualizados, where) {
-    const listaDeRegistrosAtualizados =  dataSource[this.model].update(dadosAtualizados, {
-      where: { ...where}
+  async atualizaRegistro(dadosAtualizados, where, transacao = {}) {
+    const listaDeRegistrosAtualizados =  await dataSource[this.model].update(dadosAtualizados, {
+      where: { ...where},
+      ... transacao
     });
 
     if (listaDeRegistrosAtualizados[0] === 0) {
