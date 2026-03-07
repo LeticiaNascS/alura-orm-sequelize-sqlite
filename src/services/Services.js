@@ -1,4 +1,5 @@
 const dataSource = require ('../database/models');
+const { options } = require('../routes/pessoasRoutes');
  
 class Services{
   constructor(nomeDoModel)
@@ -20,8 +21,8 @@ class Services{
     return dataSource[this.model].findOne({where: {...where}});
   }
 
-  async pegaEcontaRegistros(where){
-    return dataSource[this.model].findAndCountAll({where: {...Number}, limit: 2, order: [['id', 'ASC']]});
+  async pegaEcontaRegistros(options){
+    return dataSource[this.model].findAndCountAll({...options});
   }
 
   async atualizaRegistro(dadosAtualizados, where) {
