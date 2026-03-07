@@ -15,10 +15,11 @@ router.get('/pessoas/:id', (req,res) => pessoaController.pegaUmPorId(req,res));
 router.put('/pessoas/:id', (req,res) => pessoaController.atualiza(req,res));
 router.post('/pessoas', (req,res) => pessoaController.criar(req,res));
 router.delete('/pessoas/:id', (req,res) => pessoaController.deletar(req,res));
-router.get('/pessoas/:estudanteId/matriculas', (req,res) => pessoaController.pegaMatriculasAtivas(req,res));
-router.get('/pessoas/:estudanteId/matriculas/todos', (req,res) => pessoaController.pegaTodasAsMatriculas(req,res));
-router.get('/pessoas/:estudanteId/matriculas/:id', (req,res) => pessoaController.pegaUm(req,res));
-router.post('/pessoas/:estudanteId/matriculas', (req,res) => matriculaController.criar(req,res));
-router.post('/pessoas/estudanteId/matriculas' , (req,res) => matriculaController (req,res));
+router.get('/pessoas/:estudante_Id/matriculas', (req,res) => pessoaController.pegaMatriculasAtivas(req,res));
+router.get('/pessoas/:estudante_Id/matriculas/todos', (req,res) => pessoaController.pegaTodasAsMatriculas(req,res));
+router.get('/pessoas/:estudante_Id/matriculas/:id', (req,res) => matriculaController.pegaUm(req,res));
+router.post('/pessoas/:estudante_Id/matriculas', (req,res) => matriculaController.criar(req,res));
+router.put('/pessoas/:estudante_Id/matriculas/:id', (req,res) => matriculaController.atualiza(req,res));
+router.post('/pessoas/:estudante_Id/matriculas/:id', (req,res) => matriculaController.deletar(req,res));
 
 module.exports = router;

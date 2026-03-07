@@ -20,9 +20,9 @@ class Services{
     return dataSource[this.model].findOne({where: {...where}});
   }
 
-  async atualizaRegistro(dadosAtualizados, id) {
+  async atualizaRegistro(dadosAtualizados, where) {
     const listaDeRegistrosAtualizados =  dataSource[this.model].update(dadosAtualizados, {
-      where: { id: id }
+      where: { ...where}
     });
 
     if (listaDeRegistrosAtualizados[0] === 0) {
