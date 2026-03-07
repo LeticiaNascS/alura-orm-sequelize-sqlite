@@ -9,7 +9,7 @@ class Controller {
         await this.entidadeService.pegaTodosOsRegistros();
       return res.status(200).json(listaDeRegistros);
     } catch (erro) {
-      return res.status(500).send('Erro ao listar pessoas');
+      return res.status(500).send({erro: erro.message});
     }
   }
 
@@ -21,7 +21,7 @@ class Controller {
       return res.status(200).json(umRegistro);
 
     }catch(erro){
-      res.status(500).json({mensagem: 'Erro no servidor'});
+      res.status(500).json({erro: erro.message});
     }
   }
 
@@ -38,7 +38,7 @@ class Controller {
       }
       return res.status(200).json({mensagem: 'Registro atualizado com sucesso'});
     } catch (erro) {
-      return res.status(500).send('Erro no servidor');
+      return res.status(500).send({erro: erro.message});
     }
   }
 
@@ -56,7 +56,7 @@ class Controller {
 
     } catch (erro) {
 
-      res.status(500).json({mensagem: 'Erro no servidor'});
+      res.status(500).json({erro: erro.message});
     }
   }
 
@@ -70,7 +70,7 @@ class Controller {
 
     }catch(erro) {
 
-      res.status(500).json({mensagem: 'Erro no servidor'});
+      res.status(500).json({erro: erro.message});
     }
   }
 }

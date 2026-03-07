@@ -14,7 +14,14 @@ module.exports = (sequelize, DataTypes) => {
 
   Pessoa.init({
     nome: DataTypes.STRING,
-    email: DataTypes.STRING,
+    email: {type: DataTypes.STRING, // validaçao de e-mail
+      validate: {
+        isEmail: {
+          args: true,
+          msg: 'formato do e-mail inválido'
+        }
+      }
+    },
     cpf: DataTypes.STRING,
     ativo: DataTypes.BOOLEAN,
     role: DataTypes.STRING
@@ -23,16 +30,16 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Pessoa',
     tableName: 'pessoas',
     paranoid: true, 
-    defaultScope:{
+    defaultScope:{ //escopo utilizado para filtrar apenas pessoas ativas 
       where: {
         ativo:true,
 
       }
     },
-    scopes:{
+    scopes:{ //escopo utilizado para filtrar todos os registros de pessoas ativas ou inativas
       todosOsRegistros:{
         where: {
-          
+
         }
       }
     }
