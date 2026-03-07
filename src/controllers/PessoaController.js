@@ -19,6 +19,16 @@ class PessoaController extends Controller {
       res.status(500).json({mensagem: 'Erro no servidor'});
     }
   }
+
+  async pegaTodasAsPessoas(req,res){
+    try{
+      const listaTodasAsPessoas = await pessoaServices.pegaPessoasEscopoTodos();
+      return res.status(200).json(listaTodasAsPessoas)
+
+    }catch(erro){
+      res.status(500).json({erro: erro.message});
+    }
+  }
 }
 
 
