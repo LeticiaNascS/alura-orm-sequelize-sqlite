@@ -16,6 +16,9 @@ class Services{
   async pegaRegistroPorID(id){
     return dataSource[this.model].findByPk(id);
   }
+  async pegaUmRegistro(where){
+    return dataSource[this.model].findOne({where: {...where}});
+  }
 
   async atualizaRegistro(dadosAtualizados, id) {
     const listaDeRegistrosAtualizados =  dataSource[this.model].update(dadosAtualizados, {

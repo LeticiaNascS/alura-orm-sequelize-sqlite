@@ -25,6 +25,18 @@ class Controller {
     }
   }
 
+  async pegaUm(req,res){
+    const {...params} = req.params;
+    console.log(params)
+    try{
+      const umRegistro = await this.entidadeService.pegaUmRegistro(params);
+      return res.status(200).json(umRegistro);
+
+    }catch(erro){
+      res.status(500).json({erro: erro.message});
+    }
+  }
+
   async atualiza(req,res){
    
     const { id } = req.params;
